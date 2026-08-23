@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Favorite Person ❤️</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #ffe6eb;
+      color: #590d22;
+      min-height: 100vh;
+    }
+
+    /* --- PIN GATE OVERLAY --- */
+    #pin-screen {
+      position: fixed;
+      inset: 0;
+      background: #ffe6eb;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+    .pin-card {
+      background: white;
+      padding: 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(255, 77, 109, 0.2);
+      text-align: center;
+      max-width: 350px;
+      width: 100%;
+    }
+    .pin-input {
+      width: 100%;
+      letter-spacing: 15px;
+      font-size: 2rem;
+      text-align: center;
+      padding: 10px;
+      margin: 20px 0 10px 0;
+      border: 2px solid #ffb3c1;
+      border-radius: 12px;
+      outline: none;
+      color: #590d22;
+    }
+    .error-msg {
+      color: #c9184a;
+      font-weight: 600;
+      font-size: 0.9rem;
+      min-height: 24px;
+      margin-top: 5px;
+    }
+
+    /* --- MAIN CONTENT & CENTERING --- */
+    #main-content {
+      display: none;
+      width: 100%;
+      min-height: 100vh;
+      position: relative;
+      padding: 60px 20px;
+    }
+
+    .bg-collage {
+      position: fixed;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+      padding: 12px;
+      z-index: 1;
+      overflow: hidden;
+      opacity: 0.45;
+    }
+    .bg-collage img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border: 4px solid #ffb3c1;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    /* Centered Container */
+    .content-container {
+      position: relative;
+      z-index: 10;
+      max-width: 500px;
+      width: 100%;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 120px);
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      border: 2px solid #ffccd5;
+      text-align: center;
+      width: 100%;
+    }
+
+    /* --- ENVELOPE / LOVE LETTER --- */
+    .envelope-wrapper {
+      cursor: pointer;
+      background: #ffb3c1;
+      border-radius: 15px;
+      padding: 20px;
+      transition: transform 0.2s;
+    }
+    .envelope-wrapper:hover {
+      transform: scale(1.02);
+    }
+    .letter-paper {
+      display: none;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px dashed #ff4d6d;
+      margin-top: 15px;
+      text-align: left;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    /* --- BUTTONS & PLAYER --- */
+    button {
+      background-color: #ff4d6d;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: transform 0.2s, background-color 0.2s;
+    }
+    button:hover {
+      transform: scale(1.05);
+      background-color: #c9184a;
+    }
+    iframe {
+      border-radius: 12px;
+      width: 100%;
+      height: 152px;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. PASSCODE SCREEN -->
+  <div id="pin-screen">
+    <div class="pin-card">
+      <h2 style="margin:0;">❤️Enter Pin❤️</h2>
+      <p style="font-size: 0.85rem; color: #800f2f;">(Hint: **** (hehe))</p>
+      
+      <input type="password" id="pin" class="pin-input" maxlength="4" placeholder="••••" oninput="checkPin()">
+      
+      <div id="error-message" class="error-msg"></div>
+    </div>
+  </div>a
+
+  <!-- 2. MAIN SITE CONTENT -->
+  <div id="main-content">
+    
+    <!-- Collaged Background Images -->
+    <div class="bg-collage">
+      <img src="1.jpg" alt="Memory 1">
+      <img src="2.jpg" alt="Memory 2">
+      <img src="3.jpg" alt="Memory 3">
+      <img src="4.jpg" alt="Memory 4">
+      <img src="5.jpg" alt="Memory 5">
+      <img src="6.jpg" alt="Memory 6">
+      <img src="7.jpg" alt="Memory 7">
+      <img src="8.jpg" alt="Memory 8">
+      <img src="9.jpg" alt="Memory 9">
+      <img src="10.jpg" alt="Memory 10">
+      <img src="11.jpg" alt="Memory 11">
+      <img src="12.jpg" alt="Memory 12">
+      <img src="13.jpg" alt="Memory 13">
+      <img src="14.jpg" alt="Memory 14">
+      <img src="15.jpg" alt="Memory 15">
+      <img src="16.jpg" alt="Memory 16">
+      <img src="17.jpg" alt="Memory 17">
+      <img src="18.jpg" alt="Memory 18">
+      <img src="19.jpg" alt="Memory 19">
+      <img src="20.jpg" alt="Memory 20">
+      <img src="21.jpg" alt="Memory 21">
+      <img src="22.jpg" alt="Memory 22">
+      <img src="23.jpg" alt="Memory 23">
+      <img src="24.jpg" alt="Memory 24">
+      <img src="25.jpg" alt="Memory 25">
+      <img src="26.jpg" alt="Memory 26">
+      <img src="27.jpg" alt="Memory 27">
+      <img src="28.jpg" alt="Memory 28">
+      <img src="29.jpg" alt="Memory 29">
+      <img src="30.jpg" alt="Memory 30">
+      <img src="31.jpg" alt="Memory 31">
+      <img src="32.jpg" alt="Memory 32">
+      <img src="33.jpg" alt="Memory 33">
+      <img src="34.jpg" alt="Memory 34">
+      <img src="35.jpg" alt="Memory 35">
+      <img src="36.jpg" alt="Memory 36">
+      <img src="37.jpg" alt="Memory 37">
+      <img src="38.jpg" alt="Memory 38">
+      <img src="39.jpg" alt="Memory 39">
+      <img src="40.jpg" alt="Memory 40">
+      <img src="41.jpg" alt="Memory 41">
+      <img src="42.jpg" alt="Memory 42">
+      <img src="43.jpg" alt="Memory 43">
+      <img src="44.jpg" alt="Memory 44">
+      <img src="45.jpg" alt="Memory 45">
+    </div>
+
+    <div class="content-container">
+
+      <!-- Interactive Love Letter -->
+      <div class="card">
+        <h2 style="margin-top:0;">You Unlocked My Heart 🔑❤️</h2>
+        <div class="envelope-wrapper" onclick="toggleLetter()">
+          <span style="font-size: 2.5rem;">💌</span>
+          <p style="margin: 5px 0 0 0; font-weight: bold; color: white;">Click to open your letter</p>
+          
+          <div id="letter" class="letter-paper">
+            <p><strong>To my Baowie,</strong></p>
+            <p>I built this tiny corner of the internet just to remind you how deeply loved you are. Every day with you feels like my favorite memory in the making.</p>
+            <p>Thank you for being my best friend, my safe space, and my favorite person. Forever & 4always. 💕</p>
+            <p><strong>- Miwie</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reasons Generator -->
+      <div class="card">
+        <h3 style="margin-top: 0;">Reasons I Love You ✨</h3>
+        <div id="love-note" style="min-height: 48px; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+          Click the button below!
+        </div>
+        <button onclick="newNote()">Show Me Another</button>
+      </div>
+
+      <!-- Spotify QR Code Card -->
+      <div class="card">
+        <h3 style="margin-top: 0;">Our Soundtrack 🎵</h3>
+        <p style="font-size: 0.85rem; margin-bottom: 15px;">Scan this on your Spotify app to listen to a playlist I made specially for you!</p>
+        
+        <div style="background: #163624; padding: 15px; border-radius: 12px; display: inline-block;">
+          <img 
+            src="https://scannables.scdn.co/uri/plain/jpeg/163624/white/640/spotify:playlist:7cj6ZeeVgN8XIy0rTFRcSo" 
+            alt="Spotify QR Code" 
+            style="width: 100%; max-width: 280px; height: auto; border: none; border-radius: 0;"
+          >
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // Set your 4-digit PIN here
+    const CORRECT_PIN = "1209";
+
+    function checkPin() {
+      const input = document.getElementById('pin');
+      const errorDiv = document.getElementById('error-message');
+
+      if (input.value.length === 4) {
+        if (input.value === CORRECT_PIN) {
+          document.getElementById('pin-screen').style.display = 'none';
+          document.getElementById('main-content').style.display = 'block';
+        } else {
+          errorDiv.innerText = "you dont know our special day? 😢";
+          input.value = "";
+        }
+      } else {
+        errorDiv.innerText = "";
+      }
+    }
+
+    function toggleLetter() {
+      const letter = document.getElementById('letter');
+      letter.style.display = letter.style.display === 'block' ? 'none' : 'block';
+    }
+
+    const notes = [
+      "1. Your laugh is my absolute favorite sound in the world.",
+      "2. How caring you are toward everyone around you.",
+      "3. The way you make even ordinary days feel special.",
+      "4. Your amazing and corny sense of humor.",
+      "5. How safe and happy I feel whenever I'm holding your hand.",
+      "6. How I feel warmth just being close to you.",
+      "7. How you make me smile.",
+      "8. Your cute unintentional bumbum dance when you cook.",
+      "9. When you share your unimaginable dreams with me.",
+      "10. How you outsmart me on simple things (I just don't admit it)",
+      "11. When you sing to me.",
+      "12. The way that you're so down-to-earth (also an angel in my eyes).",
+      "13. Your mischieful personality.(haha pervy)",
+      "14. How thoughtful you are.",
+      "15. How tightly you hug me when you missed me so much",
+      "16. How you bid me goodmornings with tender kissies.(my favorite ^^)",
+      "17. How you make me feel the most luckiest person on earth who ever lived.",
+      "18. Your loving and patient nature.",
+      "19. Simply being YOU!"
+    ];
+
+    let currentNoteIndex = 0;
+
+    function newNote() {
+      document.getElementById('love-note').innerText = notes[currentNoteIndex];
+      currentNoteIndex = (currentNoteIndex + 1) % notes.length;
+    }
+  </script>
+
+</body>
+</html>
